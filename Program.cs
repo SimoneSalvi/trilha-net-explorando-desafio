@@ -6,20 +6,25 @@ Console.OutputEncoding = Encoding.UTF8;
 // Cria os modelos de hóspedes e cadastra na lista de hóspedes
 List<Pessoa> hospedes = new List<Pessoa>();
 
-Pessoa p1 = new Pessoa(nome: "Hóspede 1");
-Pessoa p2 = new Pessoa(nome: "Hóspede 2");
+Pessoa esposa = new Pessoa(nome: "Maria", sobrenome: "Antônia");
+Pessoa esposo = new Pessoa(nome: "Pedro", sobrenome: "Henrique");
+Pessoa filha = new Pessoa(nome: "Clarinha", sobrenome: "Antônia Henrique");
+Pessoa filho = new Pessoa(nome: "Pedrinho", sobrenome: "Henrique Junior");
 
-hospedes.Add(p1);
-hospedes.Add(p2);
+hospedes.Add(esposa);
+hospedes.Add(esposo);
+hospedes.Add(filha);
+hospedes.Add(filho);
 
 // Cria a suíte
-Suite suite = new Suite(tipoSuite: "Premium", capacidade: 2, valorDiaria: 30);
+Suite suiteDupla = new Suite(tipoSuite: "Premium", capacidade: 4, valorDiaria: 30);
+Suite suiteSimples = new Suite(tipoSuite: "Basic", capacidade: 2, valorDiaria: 15);
 
 // Cria uma nova reserva, passando a suíte e os hóspedes
-Reserva reserva = new Reserva(diasReservados: 5);
-reserva.CadastrarSuite(suite);
-reserva.CadastrarHospedes(hospedes);
+Reserva reservaFamilia = new Reserva(diasReservados: 10);
+reservaFamilia.CadastrarSuite(suiteDupla);
+reservaFamilia.CadastrarHospedes(hospedes);
 
 // Exibe a quantidade de hóspedes e o valor da diária
-Console.WriteLine($"Hóspedes: {reserva.ObterQuantidadeHospedes()}");
-Console.WriteLine($"Valor diária: {reserva.CalcularValorDiaria()}");
+Console.WriteLine($"Hóspedes: {reservaFamilia.ObterQuantidadeHospedes()}");
+Console.WriteLine($"Valor diária: {reservaFamilia.CalcularValorDiaria(reservaFamilia)}");
